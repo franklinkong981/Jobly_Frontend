@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {ListGroup} from "reactstrap";
 
 import SearchBar from "./SearchBar.jsx";
@@ -8,7 +8,7 @@ function JobList() {
   const [listOfJobs, setListOfJobs] = useState(["Deli Clerk", "Database Technician", "Petroleum Engineer"]);
 
   return (
-    <div class="JobsList">
+    <div className="JobsList">
       <SearchBar/>
       <ListGroup>
         {listOfJobs.map(job => (

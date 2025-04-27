@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {ListGroup} from "reactstrap";
 
 import SearchBar from "./SearchBar.jsx";
@@ -8,7 +8,7 @@ function CompanyList() {
   const [listOfCompanies, setListOfCompanies] = useState(["Apple", "IBM", "Google"]);
 
   return (
-    <div class="CompanyList">
+    <div className="CompanyList">
       <SearchBar/>
       <ListGroup>
         {listOfCompanies.map(company => (

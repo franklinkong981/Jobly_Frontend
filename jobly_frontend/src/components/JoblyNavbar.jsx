@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
-function Navbar() {
+function JoblyNavbar() {
   return (
     <div>
       <Navbar expand="md">
@@ -32,4 +32,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default JoblyNavbar;
