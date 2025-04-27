@@ -1,8 +1,21 @@
 import React from "react";
+import {ListGroup} from "reactstrap";
+
+import SearchBar from "./SearchBar.jsx";
+import CompanyCard from "./CompanyCard.jsx";
 
 function CompanyList() {
-  return (
+  const [listOfCompanies, setListOfCompanies] = useState(["Apple", "IBM", "Google"]);
 
+  return (
+    <div class="CompanyList">
+      <SearchBar/>
+      <ListGroup>
+        {listOfCompanies.map(company => (
+          <CompanyCard name={company}/>
+        ))}
+      </ListGroup>
+    </div>
   );
 }
 
