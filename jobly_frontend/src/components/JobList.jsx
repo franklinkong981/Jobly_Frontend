@@ -4,6 +4,8 @@ import {ListGroup} from "reactstrap";
 import SearchBar from "./SearchBar.jsx";
 import JobPosting from "./JobPosting.jsx";
 
+import {v4 as uuidv4} from "uuid";
+
 function JobList() {
   const [listOfJobs, setListOfJobs] = useState(["Deli Clerk", "Database Technician", "Petroleum Engineer"]);
 
@@ -12,7 +14,7 @@ function JobList() {
       <SearchBar/>
       <ListGroup>
         {listOfJobs.map(job => (
-          <JobPosting jobName={job}/>
+          <JobPosting jobName={job} key={uuidv4()}/>
         ))}
       </ListGroup>
     </div>
