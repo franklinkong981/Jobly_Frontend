@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-
+import Navbar from "components/Navbar.jsx";
 import Homepage from "components/Homepage.jsx";
 import LoginForm from "components/LoginForm.jsx";
 import SignupForm from "components/SignupForm.jsx";
@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar/>
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
