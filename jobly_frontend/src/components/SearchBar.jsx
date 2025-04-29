@@ -1,8 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
+import {useFormik} from "formik";
 
-function SearchBar() {
+
+function SearchBar({filterFunc, valuesToFilter, placeholder}) {
+  const formik = useFormik({
+    initialValues: {
+      query: ''
+    },
+    validateOnChange: false,
+    validateOnBlur: false,
+    async onSubmit(values) {
+      await filterFunc(values.query, valuesToFilter);
+    }
+  });
+
+
   return (
-    <h1>Search for companies, jobs, etc.</h1>
+    <section className="col-md-4">
+      <form className="SearchBar" onSubmit={formik.handleSubmit}>
+        <input id="SearchBar-query-field" className="SearchBar-input" type="text" name="query"
+        size="25" value={formik.values.query} placeholder={placeholder} onChange={formik.handleChange}/>
+
+        <button className="SearchBar-search-button" type="submit">Search</button>
+      </form>
+    </section>
   );
 }
 
