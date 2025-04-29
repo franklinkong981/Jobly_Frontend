@@ -18,6 +18,8 @@ function CompanyList() {
     }
     fetchCompanies();
   }, []);
+
+  
   
   if (listOfCompanies) {
     return (

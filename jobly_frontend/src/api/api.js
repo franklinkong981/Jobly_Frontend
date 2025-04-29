@@ -52,6 +52,16 @@ class JoblyApi {
     return res.companies;
   }
 
+  /** Retrieve and get details on a specific subset of companies based on a search filter. Will return an array of 
+   * company objects that match the search query like:
+   *  [companies: { handle, name, description, numEmployees, logoUrl }, ...]
+   */
+
+    static async getFilteredCompaniesByName(searchQuery) {
+      let res = await this.request(`companies?name=${searchQuery}`);
+      return res.companies;
+    }
+
   /** Get details on a company by handle. GET request on /companies/:handle will return 
    * {company: { handle, name, description, numEmployees, logoUrl, jobs }
   *   where jobs is [{ id, title, salary, equity }} */
