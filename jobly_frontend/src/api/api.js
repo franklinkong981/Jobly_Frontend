@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+
+const BASE_URL = "http://localhost:3001";
+//const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** This is the top-level API class for the Jobly backend that the frontend will interact with to retrieve
  * data about companies, jobs, user, etc.

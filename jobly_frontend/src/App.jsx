@@ -3,13 +3,13 @@ import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import JoblyNavbar from "./components/JoblyNavbar.jsx";
-import Homepage from "./components/Homepage.jsx";
-import LoginForm from "./components/LoginForm.jsx";
-import SignupForm from "./components/SignupForm.jsx";
-import UpdateProfileForm from "./components/UpdateProfileForm.jsx";
-import CompanyList from "./components/CompanyList.jsx";
-import CompanyDetail from "./components/CompanyDetail.jsx";
-import JobList from "./components/JobList.jsx";
+import Homepage from "./components/home/Homepage.jsx";
+import LoginForm from "./components/auth/LoginForm.jsx";
+import SignupForm from "./components/auth/SignupForm.jsx";
+import UpdateProfileForm from "./components/profile/UpdateProfileForm.jsx";
+import CompanyList from "./components/companies/CompanyList.jsx";
+import CompanyDetail from "./components/companies/CompanyDetail.jsx";
+import JobList from "./components/jobs/JobList.jsx";
 
 function App() {
 
