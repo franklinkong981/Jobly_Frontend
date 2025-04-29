@@ -40,6 +40,8 @@ class JoblyApi {
 
   //Individual API routes
 
+  
+
   /** Get details on a company by handle. GET request on /companies will return 
    * {company: { handle, name, description, numEmployees, logoUrl, jobs }
   *   where jobs is [{ id, title, salary, equity }} */

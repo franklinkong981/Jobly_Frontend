@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {ListGroup} from "reactstrap";
 
-import SearchBar from "./SearchBar.jsx";
+import SearchBar from "../SearchBar.jsx";
 import CompanyCard from "./CompanyCard.jsx";
 
 import {v4 as uuidv4} from "uuid";

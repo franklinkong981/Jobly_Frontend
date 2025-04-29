@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams} from "react-router-dom";
 
-import SearchBar from "./SearchBar.jsx";
+import SearchBar from "../SearchBar.jsx";
 
 function CompanyDetail() {
   const params = useParams();
