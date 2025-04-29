@@ -40,9 +40,17 @@ class JoblyApi {
 
   //Individual API routes
 
-  
+  /** Retrieve and get details on all companies currently in the database. GET request on /companies will return
+   * an array of company objects like:
+   *  [companies: { handle, name, description, numEmployees, logoUrl }, ...]
+  */
 
-  /** Get details on a company by handle. GET request on /companies will return 
+  static async getAllCompanies() {
+    let res = await this.request(`companies`);
+    return res.companies;
+  }
+
+  /** Get details on a company by handle. GET request on /companies/:handle will return 
    * {company: { handle, name, description, numEmployees, logoUrl, jobs }
   *   where jobs is [{ id, title, salary, equity }} */
   
