@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState, useEffect} from "react";
 import {ListGroup} from "reactstrap";
 
 import SearchBar from "../SearchBar.jsx";
@@ -25,7 +25,7 @@ function CompanyList() {
         <SearchBar/>
         <ListGroup>
           {listOfCompanies.map(company => (
-            <CompanyCard name={company.name} key={uuidv4()}/>
+            <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>
           ))}
         </ListGroup>
       </div>

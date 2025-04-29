@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, CardTitle} from "reactstrap";
+import { Button, Card, CardBody, CardTitle, CardText, ListGroup, ListGroupItem, CardLink} from "reactstrap";
 import "./CompanyCard.css";
 
-function CompanyCard({name}) {
+function CompanyCard({id, name, description}) {
 
   return (
-    <div className="CompanyCard">
+    <div className="CompanyCard text-end">
       <section className="col-md-8">
-        <Link to={`/companies/${name}`} key={`${name}-details-link`}>
-          <Card>
-            <CardBody className="text-center">
-              <CardTitle>
-                {name}
-              </CardTitle>
-            </CardBody>
-          </Card>
-        </Link>
+      <Card>
+        <CardBody>
+          <CardTitle>{name}</CardTitle>
+          <CardText>{description}</CardText>
+          <Link to={`/companies/${id}`} key={`${name}-details-link`}>
+            <Button color="info">Current Job Openings</Button>
+          </Link>
+        </CardBody>
+      </Card>
       </section>
     </div>
   );
