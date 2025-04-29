@@ -19,7 +19,7 @@ function SearchBar({filterFunc, placeholder}) {
     <section className="col-md-4">
       <form className="SearchBar" onSubmit={formik.handleSubmit}>
         <input id="SearchBar-query-field" className="SearchBar-input" type="text" name="query"
-        size="25" value={formik.values.query} placeholder={placeholder} onChange={formik.handleChange}/>
+        size="100" value={formik.values.query} placeholder={placeholder} onChange={formik.handleChange}/>
 
         <button className="SearchBar-search-button" type="submit">Search</button>
       </form>

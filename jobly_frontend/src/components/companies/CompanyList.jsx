@@ -30,7 +30,9 @@ function CompanyList() {
     setListOfCompanies(listOfCompanies => filteredCompanies);
   };
   
-  if (listOfCompanies) {
+  if (!listOfCompanies) {
+    return <h1>Loading...</h1>
+  } else if (listOfCompanies.length > 0) {
     return (
       <div className="CompanyList">
         <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
@@ -42,7 +44,12 @@ function CompanyList() {
       </div>
     );
   } else {
-    return <h1>Loading...</h1>
+    return (
+      <div className="CompanyList">
+        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
+        <h1>No companies found</h1>
+      </div>
+    );
   }
 }
 
