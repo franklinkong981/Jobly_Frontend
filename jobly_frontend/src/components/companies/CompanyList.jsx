@@ -19,12 +19,21 @@ function CompanyList() {
     fetchCompanies();
   }, []);
 
-  
+  const filterCompanySearch = async (searchQuery) => {
+    let filteredCompanies;
+    if (searchQuery) {
+      filteredCompanies = await JoblyApi.getFilteredCompaniesByName(searchQuery);
+    } else {
+      filteredCompanies = await JoblyApi.getAllCompanies();
+    }
+
+    setListOfCompanies(listOfCompanies => filteredCompanies);
+  };
   
   if (listOfCompanies) {
     return (
       <div className="CompanyList">
-        <SearchBar/>
+        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
         <ListGroup>
           {listOfCompanies.map(company => (
             <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>

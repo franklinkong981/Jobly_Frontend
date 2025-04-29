@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useFormik} from "formik";
 
 
-function SearchBar({filterFunc, valuesToFilter, placeholder}) {
+function SearchBar({filterFunc, placeholder}) {
   const formik = useFormik({
     initialValues: {
       query: ''
@@ -10,7 +10,7 @@ function SearchBar({filterFunc, valuesToFilter, placeholder}) {
     validateOnChange: false,
     validateOnBlur: false,
     async onSubmit(values) {
-      await filterFunc(values.query, valuesToFilter);
+      await filterFunc(values.query);
     }
   });
 
