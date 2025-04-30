@@ -20,14 +20,14 @@ function JobList() {
   }, []);
 
   const filterJobSearch = async (searchQuery) => {
-    let filteredCompanies;
+    let filteredJobs;
     if (searchQuery) {
-      filteredCompanies = await JoblyApi.getFilteredCompaniesByName(searchQuery);
+      filteredJobs = await JoblyApi.getFilteredJobsByTitle(searchQuery);
     } else {
-      filteredCompanies = await JoblyApi.getAllCompanies();
+      filteredJobs = await JoblyApi.getAllJobs();
     }
 
-    setListOfCompanies(listOfCompanies => filteredCompanies);
+    setListOfJobs(listOfJobs => filteredJobs);
   };
 
   if (!listOfJobs) {
@@ -36,7 +36,7 @@ function JobList() {
   
   return (
     <div className="JobsList">
-      <SearchBar/>
+      <SearchBar filterFunc={filterJobSearch} placeholder="Search for jobs"/>
       {listOfJobs.length > 0 ? (
         <ListGroup>
         {listOfJobs.map(job => (
@@ -49,27 +49,3 @@ function JobList() {
 }
 
 export default JobList;
-
-/*
-if (!listOfCompanies) {
-    return <h1>Loading...</h1>
-  } else if (listOfCompanies.length > 0) {
-    return (
-      <div className="CompanyList">
-        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
-        <ListGroup>
-          {listOfCompanies.map(company => (
-            <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>
-          ))}
-        </ListGroup>
-      </div>
-    );
-  } else {
-    return (
-      <div className="CompanyList">
-        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
-        <h1>No companies found</h1>
-      </div>
-    );
-  }
-*/
