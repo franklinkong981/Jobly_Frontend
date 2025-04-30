@@ -32,25 +32,20 @@ function CompanyList() {
   
   if (!listOfCompanies) {
     return <h1>Loading...</h1>
-  } else if (listOfCompanies.length > 0) {
-    return (
-      <div className="CompanyList">
-        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
+  }
+  
+  return (
+    <div className="CompanyList">
+      <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
+      {listOfCompanies.length > 0 ? (
         <ListGroup>
           {listOfCompanies.map(company => (
             <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>
           ))}
         </ListGroup>
-      </div>
-    );
-  } else {
-    return (
-      <div className="CompanyList">
-        <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
-        <h1>No companies found</h1>
-      </div>
-    );
-  }
+      ) : <h1>No companies found</h1>}
+    </div>
+  );
 }
 
 export default CompanyList;
