@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, CardBody, CardTitle, CardText, ListGroup, ListGroupItem, CardLink} from "reactstrap";
+import { Button, Card, CardBody, CardTitle, CardText} from "reactstrap";
 import "./CompanyCard.css";
 
 function CompanyCard({id, name, description}) {
