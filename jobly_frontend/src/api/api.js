@@ -79,6 +79,14 @@ class JoblyApi {
     return res.allJobs;
   }
 
+  /** Get information about a specific subset of jobs based on a search filter. Will return an array of job objects
+   * where each job object corresponds to a job that matches the search query and is { id, title, salary, equity, companyHandle, companyName }
+   */
+  static async getFilteredJobsByTitle(searchQuery) {
+    let res = await this.request(`jobs?title=${searchQuery}`);
+    return res.allJobs;
+  }
+
 }
 
 //For now, this is the test user that will be used to test the code while it is under development.
