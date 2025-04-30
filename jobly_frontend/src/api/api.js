@@ -71,7 +71,13 @@ class JoblyApi {
     return res.company;
   }
 
-  //more methods to come down here.
+  /** Get information about all jobs, GET request on /jobs will return an array of job objects
+   * where each job object is { id, title, salary, equity, companyHandle, companyName }
+   */
+  static async getAllJobs() {
+    let res = await this.request(`jobs`);
+    return res.allJobs;
+  }
 
 }
 
