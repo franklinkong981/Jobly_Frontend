@@ -28,7 +28,7 @@ function CompanyDetail() {
         <p>Current number of employees: {companyInfo.numEmployees}</p>
         <ListGroup>
           {companyInfo.jobs.map(job => (
-            <JobPosting jobName={job} key={uuidv4()}/>
+            <JobPosting job={job} key={uuidv4()}/>
           ))}
         </ListGroup>
       </div>

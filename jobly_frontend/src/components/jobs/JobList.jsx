@@ -40,7 +40,7 @@ function JobList() {
       {listOfJobs.length > 0 ? (
         <ListGroup>
         {listOfJobs.map(job => (
-          <JobPosting jobName={job} key={uuidv4()}/>
+          <JobPosting job={job} key={uuidv4()}/>
         ))}
       </ListGroup>
       ) : <h1>No jobs found</h1>}
