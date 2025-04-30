@@ -3,7 +3,9 @@ import {useParams} from "react-router-dom";
 import {ListGroup, ListGroupItem} from "reactstrap";
 
 import JoblyApi from "../../api/api.js";
-import SearchBar from "../SearchBar.jsx";
+import JobPosting from "../jobs/JobPosting.jsx";
+
+import {v4 as uuidv4} from "uuid";
 
 function CompanyDetail() {
   const params = useParams();
@@ -26,7 +28,7 @@ function CompanyDetail() {
         <p>Current number of employees: {companyInfo.numEmployees}</p>
         <ListGroup>
           {companyInfo.jobs.map(job => (
-            <ListGroupItem>{job.title}</ListGroupItem>
+            <JobPosting jobName={job} key={uuidv4()}/>
           ))}
         </ListGroup>
       </div>
