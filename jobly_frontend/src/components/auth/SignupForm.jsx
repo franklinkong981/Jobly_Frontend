@@ -22,11 +22,11 @@ function SignupForm({signUpFunc}) {
     <section className="col-md-4">
       <h1>Sign Up For Jobly</h1>
       <form className="SignUpForm" onSubmit={formik.handleSubmit}>
-        <label htmlFor="username=field">Username: </label>
+        <label htmlFor="username-field">Username: </label>
         <input id="username-field" className="SignupForm-username-field" type="text" name="username"
         size="50" value={formik.values.username} onChange={formik.handleChange}/><br/>
 
-        <label htmlFor="password=field">Password: </label>
+        <label htmlFor="password-field">Password: </label>
         <input id="password-field" className="SignupForm-password-field" type="password" name="password"
         size="50" value={formik.values.password} onChange={formik.handleChange}/><br/>
 
