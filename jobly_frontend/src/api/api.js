@@ -42,6 +42,27 @@ class JoblyApi {
 
   //Individual API routes
 
+  /** Signs the user in, adds the new user information to the database, and generates a new token for the user.
+   * The signupFormValues will contain the new user's username, password, first name, last name, and email.
+   */
+  static async signup(signupFormValues) {
+    let res = await this.request(`auth/register`, signupFormValues, "post");
+    JoblyApi.token = res.token;
+  }
+
+  /** Logs in the user. The loginFormValues will contain the user's username and password. If the user is authenticated and
+   * they are successful, logs the user in.
+   */
+  static async login(loginFormValues) {
+    let res = await this.request(`token`, loginFormValues, "post");
+    JoblyApi.token = res.token;
+  }
+
+  /** Logs out the user and sets the token variable to null. */
+  static async logout() {
+    JoblyApi.token = null;
+  }
+
   /** Retrieve and get details on all companies currently in the database. GET request on /companies will return
    * an array of company objects like:
    *  [companies: { handle, name, description, numEmployees, logoUrl }, ...]
