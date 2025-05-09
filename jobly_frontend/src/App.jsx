@@ -37,8 +37,8 @@ function App() {
       <BrowserRouter>
         <JoblyNavbar/>
         <Routes>
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
+          <Route path="/signup" element={<SignupForm signUpFunc={signUpNewUser} />} />
           <Route path="/profile" element={<UpdateProfileForm />} />
           <Route path="/companies" element={<CompanyList />} />
           <Route path="/companies/:name" element={<CompanyDetail />} />

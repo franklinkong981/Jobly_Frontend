@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {useFormik} from "formik";
+import {useNavigate} from "react-router-dom";
 
 const validate = values => {
 	const errors = { };
@@ -15,6 +16,8 @@ const validate = values => {
 };
 
 function LoginForm({loginFunc}) {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -25,6 +28,7 @@ function LoginForm({loginFunc}) {
     validateOnBlur: false,
     async onSubmit(values) {
       await loginFunc(values);
+      navigate("/");
     }
   });
 
