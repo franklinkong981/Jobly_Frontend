@@ -21,7 +21,7 @@ function App() {
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
 
   //runs whenever the token changes (aka signup, login, or logout) to either get information about the user who just signed up/logged in
-  //by decoding the token they received or setting the current user to null.
+  //by decoding the token they received or setting the current user to null. currentUserInfo will have attributes of username and isAdmin.
   useEffect(function getUserInfoUponTokenChange() {
     if (userToken) {
       const decodedPayload = jwtDecode(userToken);
