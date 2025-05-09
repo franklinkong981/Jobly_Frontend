@@ -45,8 +45,8 @@ class JoblyApi {
   /** Signs the user in, adds the new user information to the database, and generates a new token for the user.
    * The signupFormValues will contain the new user's username, password, first name, last name, and email.
    */
-  static async signup(signupFormValues) {
-    let res = await this.request(`auth/register`, signupFormValues, "post");
+  static async signUp(signUpFormValues) {
+    let res = await this.request(`auth/register`, signUpFormValues, "post");
     JoblyApi.token = res.token;
   }
 

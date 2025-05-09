@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+
+import JoblyApi from "./api/api.js";
 
 import JoblyNavbar from "./components/JoblyNavbar.jsx";
 import Homepage from "./components/home/Homepage.jsx";
@@ -12,6 +14,23 @@ import CompanyDetail from "./components/companies/CompanyDetail.jsx";
 import JobList from "./components/jobs/JobList.jsx";
 
 function App() {
+  const [userToken, setUserToken] = useState(null);
+  const [currentUserInfo, setCurrentUserInfo] = useState({});
+
+  const signUpNewUser = async (values) => {
+    await JoblyApi.signUp(values);
+    setUserToken(userToken => JoblyApi.token);
+  }
+
+  const loginUser = async (values) => {
+    await JoblyApi.login(values);
+    setUserToken(userToken => JoblyApi.token);
+  }
+
+  const logoutUser = async (values) => {
+    await JoblyApi.logout();
+    setUserToekn(userToken => JoblyApi.token);
+  }
 
   return (
     <div className="App">
