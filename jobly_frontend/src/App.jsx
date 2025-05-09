@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { jwtDecode } from "jwt-decode";
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
@@ -17,8 +17,8 @@ import JobList from "./components/jobs/JobList.jsx";
 import CurrentUserContext from "./contexts/currentUserContext.jsx";
 
 function App() {
-  const [userToken, setUserToken] = useState(null);
-  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+  const [userToken, setUserToken] = useState("");
+  const [currentUserInfo, setCurrentUserInfo] = useState({});
 
   //runs whenever the token changes (aka signup, login, or logout) to either get information about the user who just signed up/logged in
   //by decoding the token they received or setting the current user to null. currentUserInfo will have attributes of username and isAdmin.
@@ -27,9 +27,9 @@ function App() {
       const decodedPayload = jwtDecode(userToken);
       setCurrentUserInfo(currentUserInfo => decodedPayload);
     } else if (currentUserInfo){
-      setCurrentUserInfo(currentUserInfo => null);
+      setCurrentUserInfo(currentUserInfo => {});
     }
-  }, [token]);
+  }, [userToken]);
 
   const signUpNewUser = async (values) => {
     await JoblyApi.signUp(values);
@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <CurrentUserContext.Provider value={currentUserInfo}>
-          <JoblyNavbar logOutFunc={logOutUser}/>
+          <JoblyNavbar logOutFunc={logoutUser}/>
           <Routes>
             <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
             <Route path="/signup" element={<SignupForm signUpFunc={signUpNewUser} />} />

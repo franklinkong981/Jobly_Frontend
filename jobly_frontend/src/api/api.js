@@ -47,7 +47,7 @@ class JoblyApi {
    */
   static async signUp(signUpFormValues) {
     let res = await this.request(`auth/register`, signUpFormValues, "post");
-    JoblyApi.token = res.token;
+    return res.token;
   }
 
   /** Logs in the user. The loginFormValues will contain the user's username and password. If the user is authenticated and
@@ -55,12 +55,13 @@ class JoblyApi {
    */
   static async login(loginFormValues) {
     let res = await this.request(`token`, loginFormValues, "post");
-    JoblyApi.token = res.token;
+    return res.token;
   }
 
-  /** Logs out the user and sets the token variable to null. */
-  static async logout() {
-    JoblyApi.token = null;
+  /** Gets information about the current logged in user such as their first name, last name, and email.  */
+  static async getCurrentLoggedInUser(username) {
+    let res = await this.request(`user/${username}`);
+    return res.user;
   }
 
   /** Retrieve and get details on all companies currently in the database. GET request on /companies will return

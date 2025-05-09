@@ -2,8 +2,10 @@ import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
+import CurrentUserContext from "../contexts/currentUserContext.jsx";
+
 function JoblyNavbar({logOutFunc}) {
-  const {currentUserInfo} = useContext(CountContext);
+  const {currentUserInfo} = useContext(CurrentUserContext);
 
   return (
     <div>
@@ -12,7 +14,7 @@ function JoblyNavbar({logOutFunc}) {
           Jobly
         </NavLink>
 
-        {currentUserInfo ? (
+        {Object.keys(currentUserInfo).length > 0 ? (
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink to="/companies">Companies</NavLink>
