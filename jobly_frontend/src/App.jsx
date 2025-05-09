@@ -14,6 +14,8 @@ import CompanyList from "./components/companies/CompanyList.jsx";
 import CompanyDetail from "./components/companies/CompanyDetail.jsx";
 import JobList from "./components/jobs/JobList.jsx";
 
+import CurrentUserContext from "./contexts/currentUserContext.jsx";
+
 function App() {
   const [userToken, setUserToken] = useState(null);
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
@@ -47,16 +49,18 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <JoblyNavbar/>
-        <Routes>
-          <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
-          <Route path="/signup" element={<SignupForm signUpFunc={signUpNewUser} />} />
-          <Route path="/profile" element={<UpdateProfileForm />} />
-          <Route path="/companies" element={<CompanyList />} />
-          <Route path="/companies/:name" element={<CompanyDetail />} />
-          <Route path="/jobs" element={<JobList />} />
-          <Route path="/" element={<Homepage />} />
-        </Routes>
+        <CurrentUserContext.Provider value={currentUserInfo}>
+          <JoblyNavbar/>
+          <Routes>
+            <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
+            <Route path="/signup" element={<SignupForm signUpFunc={signUpNewUser} />} />
+            <Route path="/profile" element={<UpdateProfileForm />} />
+            <Route path="/companies" element={<CompanyList />} />
+            <Route path="/companies/:name" element={<CompanyDetail />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/" element={<Homepage />} />
+          </Routes>
+        </CurrentUserContext.Provider>
       </BrowserRouter>
     </div>
   );
