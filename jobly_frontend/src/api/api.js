@@ -28,7 +28,7 @@ class JoblyApi {
 
     //This is one way to pass an authorization token: As part of the header.
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = {Authorization: `Bearer ${JoblyApi.token}`};
+    const headers = (JoblyApi.token) ? {authorization: `Bearer ${JoblyApi.token}`} : {};
     const params = (method === "get") ? data : {};
 
     try {
@@ -57,10 +57,10 @@ class JoblyApi {
    *  [companies: { handle, name, description, numEmployees, logoUrl }, ...]
    */
 
-    static async getFilteredCompaniesByName(searchQuery) {
-      let res = await this.request(`companies?name=${searchQuery}`);
-      return res.companies;
-    }
+  static async getFilteredCompaniesByName(searchQuery) {
+    let res = await this.request(`companies?name=${searchQuery}`);
+    return res.companies;
+  }
 
   /** Get details on a company by handle. GET request on /companies/:handle will return 
    * {company: { handle, name, description, numEmployees, logoUrl, jobs }
@@ -91,8 +91,8 @@ class JoblyApi {
 
 //For now, this is the test user that will be used to test the code while it is under development.
 //This is the token that will be given to a user with username = "testuser", password = "password"
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+/* JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
 "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc"; */
 
 export default JoblyApi;
