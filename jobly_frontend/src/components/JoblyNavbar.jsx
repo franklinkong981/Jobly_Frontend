@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
-function JoblyNavbar() {
+function JoblyNavbar({logOutFunc}) {
   const {currentUserInfo} = useContext(CountContext);
 
   return (
@@ -24,7 +24,7 @@ function JoblyNavbar() {
               <NavLink to="/profile">Update Profile</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/logout">Log Out</NavLink>
+              <NavLink to="/">Log Out</NavLink>
             </NavItem>
           </Nav>
         ) : (
