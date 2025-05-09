@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { jwtDecode } from "jwt-decode";
 import './App.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
@@ -15,7 +16,18 @@ import JobList from "./components/jobs/JobList.jsx";
 
 function App() {
   const [userToken, setUserToken] = useState(null);
-  const [currentUserInfo, setCurrentUserInfo] = useState({});
+  const [currentUserInfo, setCurrentUserInfo] = useState(null);
+
+  //runs whenever the token changes (aka signup, login, or logout) to either get information about the user who just signed up/logged in
+  //by decoding the token they received or setting the current user to null.
+  useEffect(function getUserInfoUponTokenChange() {
+    if (userToken) {
+      const decodedPayload = jwtDecode(userToken);
+      setCurrentUserInfo(currentUserInfo => decodedPayload);
+    } else if (currentUserInfo){
+      setCurrentUserInfo(currentUserInfo => null);
+    }
+  }, [token]);
 
   const signUpNewUser = async (values) => {
     await JoblyApi.signUp(values);
