@@ -22,12 +22,23 @@ function App() {
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
 
   useEffect(function getUserInfoUponTokenChange() {
-    if (userToken) {
-      const decodedPayload = jwtDecode(userToken);
-      setCurrentUserInfo(currentUserInfo => decodedPayload);
-    } else if (currentUserInfo){
-      setCurrentUserInfo(currentUserInfo => {});
+    async function getCurrentUserInfo() {
+      if (userToken) {
+        try {
+          JoblyApi.token = userToken;
+          let currentUsername = jwtDecode(userToken);
+          let currentUser = await JoblyApi.getCurrentLoggedInUser(currentUsername);
+          setCurrentUserInfo(currentUser);
+        } catch(err) {
+          console.error("Problem encountered while fetching new current user information: ", err);
+          setCurrentUserInfo(null);
+        }
+      }
     }
+
+    setUserInfoLoaded(false);
+    getCurrentUserInfo();
+
   }, [userToken]);
 
   const signUpNewUser = async (values) => {
