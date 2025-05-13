@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 
-import CurrentUserContext from "../contexts/currentUserContext.jsx";
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 function JoblyNavbar({logOutFunc}) {
   const {currentUserInfo} = useContext(CurrentUserContext);

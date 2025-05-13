@@ -1,18 +1,13 @@
 import React, {useState, useEffect} from "react";
-import { jwtDecode } from "jwt-decode";
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+
+import { jwtDecode } from "jwt-decode";
 
 import JoblyApi from "./api/api.js";
 
-import JoblyNavbar from "./components/JoblyNavbar.jsx";
-import Homepage from "./components/home/Homepage.jsx";
-import LoginForm from "./components/auth/LoginForm.jsx";
-import SignupForm from "./components/auth/SignupForm.jsx";
-import UpdateProfileForm from "./components/profile/UpdateProfileForm.jsx";
-import CompanyList from "./components/companies/CompanyList.jsx";
-import CompanyDetail from "./components/companies/CompanyDetail.jsx";
-import JobList from "./components/jobs/JobList.jsx";
+import JoblyNavbar from "./components/routes-navbar/JoblyNavbar.jsx";
+import Routes from "./components/routes-navbar/Routes.jsx";
 
 import CurrentUserContext from "./contexts/currentUserContext.jsx";
 
@@ -78,17 +73,8 @@ function App() {
     <BrowserRouter>
       <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo}}>
         <div className="App">
-          <JoblyNavbar logOutFunc={logoutUser}/>
-          <Routes>
-            <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
-            <Route path="/signup" element={<SignupForm signUpFunc={signUpNewUser} />} />
-            
-            <Route path="/profile" element={<UpdateProfileForm />} />
-            <Route path="/companies" element={<CompanyList />} />
-            <Route path="/companies/:name" element={<CompanyDetail />} />
-            <Route path="/jobs" element={<JobList />} />
-            <Route path="/" element={<Homepage />} />
-          </Routes>
+          <JoblyNavbar logOutFunc={logoutUser} />
+          <Routes signUpFunc={signUpNewUser} loginFunc={loginUser} />
         </div>
       </CurrentUserContext.Provider>
     </BrowserRouter>
