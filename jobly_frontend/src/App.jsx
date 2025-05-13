@@ -41,20 +41,32 @@ function App() {
 
   }, [userToken]);
 
-  const signUpNewUser = async (values) => {
-    await JoblyApi.signUp(values);
-    setUserToken(userToken => JoblyApi.token);
-  }
+  const signUpNewUser = async (signUpFormValues) => {
+    try {
+      let signUpToken = await JoblyApi.signUp(signupFormValues);
+      setUserToken(signUpToken);
+      return {signUpSuccessful: true};
+    } catch(errors) {
+      console.error("User signup failed: ", errors);
+      return {signUpSuccessful: false, errors};
+    }
+  };
 
-  const loginUser = async (values) => {
-    await JoblyApi.login(values);
-    setUserToken(userToken => JoblyApi.token);
-  }
+  const loginUser = async (loginFormValues) => {
+    try {
+      let loginToken = await JoblyApi.login(loginFormValues);
+      setUserToken(loginToken);
+      return {loginSuccessful: true};
+    } catch(errors) {
+      console.error("User login failed", errors);
+      return {loginSuccessful: false, errors};
+    }
+  };
 
-  const logoutUser = async (values) => {
-    await JoblyApi.logout();
-    setUserToken(userToken => JoblyApi.token);
-  }
+  const logoutUser = () => {
+    setCurrentUserInfo(currentUserInfo => null);
+    setUserToken(userToken => null);
+  };
 
   return (
     <div className="App">
