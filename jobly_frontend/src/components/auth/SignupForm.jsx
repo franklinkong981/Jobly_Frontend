@@ -1,96 +1,116 @@
-import React from "react";
-import {useFormik} from "formik";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const validate = values => {
-	const errors = { };
-	if (!values.username) {
-		errors.username = 'Required';
-	} else if (values.username.length > 30) {
-		errors.username = 'Username must be 30 characters or less';
-	}
-
-	if (!values.password) {
-		errors.password = 'Required';
-	} else if (values.password.length < 5 || values.password.length > 20) {
-		errors.password = "Password must be between 5 and 20 characters";
-	}
-
-  if (!values.firstName) {
-    errors.firstName = "Required";
-  } else if (values.firstName.length < 30) {
-    errors.firstName = "First name must be 30 characters or less";
-  }
-
-  if (!values.lastName) {
-    errors.lastName = "Required";
-  } else if (values.lastName.length < 30) {
-    errors.lastName = "Last name must be 30 characters or less";
-  }
-
-	if (!values.email) {
-		errors.email = 'Required';
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\[A-Z]{2,4}$/i.test(values.email)) {
-		errors.email = "Must be a valid email address";
-	}
-
-	return errors;
-};
-
+import Alert from "../reusables/Alert.jsx";
 
 function SignupForm({signUpFunc}) {
   const navigate = useNavigate();
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      email: ''
-    },
-    validate,
-    validateOnChange: false,
-    validateOnBlur: false,
-    async onSubmit(values) {
-      await signUpFunc(values);
-      navigate("/");
-    }
+  const [signUpFormData, setSignUpFormData] = useState({
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
+  const [signUpFormErrors, setSignUpFormErrors] = useState([]);
 
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    let signUpResult = await signUpFunc(signUpFormData);
+    if (signUpResult.signUpSuccessful) {
+      navigate("/");
+    } else {
+      setSignUpFormErrors(signUpResult.errors);
+    }
+  }
+
+  function handleChange(evt) {
+    const {name, value} = evt.target;
+    setSignUpFormData(signUpFormData => ({...signUpFormData, [name]: value}));
+  }
 
   return (
-    <section className="col-md-4">
-      <h1>Sign Up For Jobly</h1>
-      <form className="SignUpForm" onSubmit={formik.handleSubmit}>
-        <label htmlFor="username-field">Username: </label>
-        <input id="username-field" className="SignupForm-username-field" type="text" name="username"
-        size="50" value={formik.values.username} onChange={formik.handleChange}/><br/>
-        {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+    <div className="SignupForm">
+      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <h2 className="mb-3">Create a Jobly Account to Get Started</h2>
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="SignUpForm-username-field">Username</label>
+                <input
+                    id="SignUpForm-username-field"
+                    type="text"
+                    name="username"
+                    className="form-control"
+                    value={formData.username}
+                    onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="SignUpForm-password-field">Password</label>
+                <input
+                    id="SignUpForm-password-field"
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    value={formData.password}
+                    onChange={handleChange}
+                />
+              </div>
 
-        <label htmlFor="password-field">Password: </label>
-        <input id="password-field" className="SignupForm-password-field" type="password" name="password"
-        size="50" value={formik.values.password} onChange={formik.handleChange}/><br/>
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+              <div className="form-group">
+                <label htmlFor="SignUpForm-first-name-field">First name</label>
+                <input
+                    id="SignUpForm-first-name-field"
+                    type="text"
+                    name="firstName"
+                    className="form-control"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="SignUpForm-last-name-field">Last name</label>
+                <input
+                    id="SignUpForm-last-name-field"
+                    type="text"
+                    name="lastName"
+                    className="form-control"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                    id="SignUpForm-email-field"
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+              </div>
 
-        <label htmlFor="firstName-field">First Name: </label>
-        <input id="firstName-field" className="SignupForm-firstName-field" type="text" name="firstName"
-        size="50" value={formik.values.firstName} onChange={formik.handleChange}/><br/>
-        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+              {formErrors.length
+                  ? <Alert alertText={formErrors} />
+                  : null
+              }
 
-        <label htmlFor="lastName-field">Last Name: </label>
-        <input id="lastName-field" className="SignupForm-lastName-field" type="text" name="lastName"
-        size="50" value={formik.values.lastName} onChange={formik.handleChange}/><br/>
-        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-
-        <label htmlFor="email-field">Email: </label>
-        <input id="email-field" className="SignupForm-email-field" type="email" name="email"
-        size="50" value={formik.values.email} onChange={formik.handleChange}/><br/>
-        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
-        <button className="SignUpForm-submit-button" type="submit">Create Account</button>
-      </form>
-    </section>
+              <button
+                  type="submit"
+                  className="btn btn-primary float-right"
+                  onSubmit={handleSubmit}
+              >
+                Create Account
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
