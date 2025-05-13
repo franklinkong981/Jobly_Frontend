@@ -46,6 +46,7 @@ function SignupForm({signUpFunc}) {
                     className="form-control"
                     value={formData.username}
                     onChange={handleChange}
+                    required
                 />
               </div>
               <div className="form-group">
@@ -57,6 +58,7 @@ function SignupForm({signUpFunc}) {
                     className="form-control"
                     value={formData.password}
                     onChange={handleChange}
+                    required
                 />
               </div>
 
@@ -69,6 +71,7 @@ function SignupForm({signUpFunc}) {
                     className="form-control"
                     value={formData.firstName}
                     onChange={handleChange}
+                    required
                 />
               </div>
               <div className="form-group">
@@ -80,6 +83,7 @@ function SignupForm({signUpFunc}) {
                     className="form-control"
                     value={formData.lastName}
                     onChange={handleChange}
+                    required
                 />
               </div>
               <div className="form-group">
@@ -91,19 +95,13 @@ function SignupForm({signUpFunc}) {
                     className="form-control"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                 />
               </div>
 
-              {formErrors.length
-                  ? <Alert alertText={formErrors} />
-                  : null
-              }
+              {formErrors.length ? <Alert alertText={formErrors} /> : null}
 
-              <button
-                  type="submit"
-                  className="btn btn-primary float-right"
-                  onSubmit={handleSubmit}
-              >
+              <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
                 Create Account
               </button>
             </form>

@@ -1,55 +1,76 @@
-import React from "react";
-import {useFormik} from "formik";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const validate = values => {
-	const errors = { };
-	if (!values.username) {
-		errors.username = 'Required';
-	} 
+import Alert from "../reusables/Alert.jsx";
 
-	if (!values.password) {
-		errors.password = 'Required';
-	} 
-
-	return errors;
-};
 
 function LoginForm({loginFunc}) {
   const navigate = useNavigate();
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: ''
-    },
-    validate,
-    validateOnChange: false,
-    validateOnBlur: false,
-    async onSubmit(values) {
-      await loginFunc(values);
+  const [loginFormData, setLoginFormData] = useState({
+      username: "",
+      password: ""
+    });
+  const [loginFormErrors, setLoginFormErrors] = useState([]);
+
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    let loginResult = await loginFunc(loginFormData);
+    if (loginResult.loginSuccessful) {
       navigate("/");
+    } else {
+      setLoginFormErrors(loginResult.errors);
     }
-  });
+  }
 
-
+  function handleChange(evt) {
+    const {name, value} = evt.target;
+    setLoginFormData(loginFormData => ({...loginFormData, [name]: value}));
+  }
+  
   return (
-    <section className="col-md-4">
-      <h1>Log In to Jobly</h1>
-      <form className="LoginForm" onSubmit={formik.handleSubmit}>
-        <label htmlFor="username-field">Username: </label>
-        <input id="username-field" className="LoginForm-username-field" type="text" name="username"
-        size="50" value={formik.values.username} onChange={formik.handleChange}/><br/>
-        {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+    <div className="LoginForm">
+      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <h2 className="mb-3">Log In to Jobly</h2>
 
-        <label htmlFor="password-field">Password: </label>
-        <input id="password-field" className="LoginForm-password-field" type="password" name="password"
-        size="50" value={formik.values.password} onChange={formik.handleChange}/><br/>
-        {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="LoginForm-username-field">Username</label>
+                <input
+                    id="LoginForm-username-field"
+                    type="text"
+                    name="username"
+                    className="form-control"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="LoginForm-password-field">Password</label>
+                <input
+                    id="LoginForm-password-field"
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                />
+              </div>
 
-        <button className="LoginForm-submit-button" type="submit">Log In</button>
-      </form>
-    </section>
+              {formErrors.length ? <Alert alertText={formErrors} /> : null}
+
+              <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
+                Log In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
