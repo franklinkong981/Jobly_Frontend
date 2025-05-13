@@ -68,10 +68,16 @@ function App() {
     setUserToken(userToken => null);
   };
 
-  return (
+  if (!userInfoLoaded) return (
     <div className="App">
-      <BrowserRouter>
-        <CurrentUserContext.Provider value={currentUserInfo}>
+      <h1>Loading...</h1>
+    </div>
+  )
+
+  return (
+    <BrowserRouter>
+      <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo}}>
+        <div className="App">
           <JoblyNavbar logOutFunc={logoutUser}/>
           <Routes>
             <Route path="/login" element={<LoginForm loginFunc={loginUser} />} />
@@ -83,9 +89,9 @@ function App() {
             <Route path="/jobs" element={<JobList />} />
             <Route path="/" element={<Homepage />} />
           </Routes>
-        </CurrentUserContext.Provider>
-      </BrowserRouter>
-    </div>
+        </div>
+      </CurrentUserContext.Provider>
+    </BrowserRouter>
   );
 }
 
