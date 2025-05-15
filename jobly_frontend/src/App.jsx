@@ -20,8 +20,8 @@ function App() {
       if (userToken) {
         try {
           JoblyApi.token = userToken;
-          let currentUsername = jwtDecode(userToken);
-          let currentUser = await JoblyApi.getCurrentLoggedInUser(currentUsername);
+          let currentUserPayload= jwtDecode(userToken);
+          let currentUser = await JoblyApi.getCurrentLoggedInUser(currentUserPayload.username);
           setCurrentUserInfo(currentUser);
         } catch(err) {
           console.error("Problem encountered while fetching new current user information: ", err);
@@ -38,8 +38,9 @@ function App() {
 
   const signUpNewUser = async (signUpFormValues) => {
     try {
-      let signUpToken = await JoblyApi.signUp(signupFormValues);
-      setUserToken(signUpToken);
+      console.log(signUpFormValues);
+      let signUpToken = await JoblyApi.signUp(signUpFormValues);
+      setUserToken(userToken => signUpToken);
       return {signUpSuccessful: true};
     } catch(errors) {
       console.error("User signup failed: ", errors);
@@ -49,8 +50,9 @@ function App() {
 
   const loginUser = async (loginFormValues) => {
     try {
+      console.log(loginFormValues);
       let loginToken = await JoblyApi.login(loginFormValues);
-      setUserToken(loginToken);
+      setUserToken(userToken => loginToken);
       return {loginSuccessful: true};
     } catch(errors) {
       console.error("User login failed", errors);

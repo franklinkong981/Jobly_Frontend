@@ -38,7 +38,7 @@ function SignupForm({signUpFunc}) {
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="SignUpForm-username-field">Username</label>
+                <label htmlFor="SignUpForm-username-field">Choose a username</label>
                 <input
                     id="SignUpForm-username-field"
                     type="text"
@@ -50,7 +50,7 @@ function SignupForm({signUpFunc}) {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="SignUpForm-password-field">Password</label>
+                <label htmlFor="SignUpForm-password-field">Choose a password</label>
                 <input
                     id="SignUpForm-password-field"
                     type="password"
@@ -99,7 +99,7 @@ function SignupForm({signUpFunc}) {
                 />
               </div>
 
-              {signUpFormErrors.length ? <Alert alertText={signUpFormErrors} /> : null}
+              {signUpFormErrors.length ? <Alert alertTexts={signUpFormErrors} /> : null}
 
               <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
                 Create Account

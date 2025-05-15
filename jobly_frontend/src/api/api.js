@@ -54,13 +54,13 @@ class JoblyApi {
    * they are successful, logs the user in.
    */
   static async login(loginFormValues) {
-    let res = await this.request(`token`, loginFormValues, "post");
+    let res = await this.request(`auth/token`, loginFormValues, "post");
     return res.token;
   }
 
   /** Gets information about the current logged in user such as their first name, last name, and email.  */
   static async getCurrentLoggedInUser(username) {
-    let res = await this.request(`user/${username}`);
+    let res = await this.request(`users/${username}`);
     return res.user;
   }
 
