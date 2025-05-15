@@ -43,7 +43,7 @@ function LoginForm({loginFunc}) {
                     type="text"
                     name="username"
                     className="form-control"
-                    value={formData.username}
+                    value={loginFormData.username}
                     onChange={handleChange}
                     required
                 />
@@ -55,13 +55,13 @@ function LoginForm({loginFunc}) {
                     type="password"
                     name="password"
                     className="form-control"
-                    value={formData.password}
+                    value={loginFormData.password}
                     onChange={handleChange}
                     required
                 />
               </div>
 
-              {formErrors.length ? <Alert alertText={formErrors} /> : null}
+              {loginFormErrors.length ? <Alert alertText={loginFormErrors} /> : null}
 
               <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
                 Log In

@@ -44,7 +44,7 @@ function SignupForm({signUpFunc}) {
                     type="text"
                     name="username"
                     className="form-control"
-                    value={formData.username}
+                    value={signUpFormData.username}
                     onChange={handleChange}
                     required
                 />
@@ -56,7 +56,7 @@ function SignupForm({signUpFunc}) {
                     type="password"
                     name="password"
                     className="form-control"
-                    value={formData.password}
+                    value={signUpFormData.password}
                     onChange={handleChange}
                     required
                 />
@@ -69,7 +69,7 @@ function SignupForm({signUpFunc}) {
                     type="text"
                     name="firstName"
                     className="form-control"
-                    value={formData.firstName}
+                    value={signUpFormData.firstName}
                     onChange={handleChange}
                     required
                 />
@@ -81,7 +81,7 @@ function SignupForm({signUpFunc}) {
                     type="text"
                     name="lastName"
                     className="form-control"
-                    value={formData.lastName}
+                    value={signUpFormData.lastName}
                     onChange={handleChange}
                     required
                 />
@@ -93,13 +93,13 @@ function SignupForm({signUpFunc}) {
                     type="email"
                     name="email"
                     className="form-control"
-                    value={formData.email}
+                    value={signUpFormData.email}
                     onChange={handleChange}
                     required
                 />
               </div>
 
-              {formErrors.length ? <Alert alertText={formErrors} /> : null}
+              {signUpFormErrors.length ? <Alert alertText={signUpFormErrors} /> : null}
 
               <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
                 Create Account
