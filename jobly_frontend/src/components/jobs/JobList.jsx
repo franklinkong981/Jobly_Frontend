@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import SearchBar from "../SearchBar.jsx";
+import JoblyNavbar from "../routes-navbar/JoblyNavbar.jsx";
 import JobPostingList from "./JobPostingList.jsx";
 import JoblyApi from "../../api/api.js";
 
@@ -35,7 +35,7 @@ function JobList() {
   
   return (
     <div className="JobsList col-md-8 offset-md-2">
-      <SearchBar filterFunc={filterJobSearch} placeholder="Search for jobs"/>
+      <JoblyNavbar filterFunc={filterJobSearch} placeholder="Search for jobs"/>
       {listOfJobs.length ? (
         <JobPostingList listOfJobs={listOfJobs} isGeneral={true} />
       ) : <p className="JobsList-no-jobs">No jobs found.</p>}

@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import JoblyApi from "./api/api.js";
 
 import JoblyNavbar from "./components/routes-navbar/JoblyNavbar.jsx";
-import Routes from "./components/routes-navbar/Routes.jsx";
+import JoblyRoutes from "./components/routes-navbar/JoblyRoutes.jsx";
 
 import CurrentUserContext from "./contexts/currentUserContext.jsx";
 
@@ -29,6 +29,7 @@ function App() {
           setCurrentUserInfo(null);
         }
       }
+      setUserInfoLoaded(true);
     }
 
     setUserInfoLoaded(false);
@@ -74,7 +75,7 @@ function App() {
       <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo}}>
         <div className="App">
           <JoblyNavbar logOutFunc={logoutUser} />
-          <Routes signUpFunc={signUpNewUser} loginFunc={loginUser} />
+          <JoblyRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />
         </div>
       </CurrentUserContext.Provider>
     </BrowserRouter>

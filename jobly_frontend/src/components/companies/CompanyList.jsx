@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import SearchBar from "../SearchBar.jsx";
+import JoblyNavbar from "../routes-navbar/JoblyNavbar.jsx";
 import CompanyCard from "./CompanyCard.jsx";
 import JoblyApi from "../../api/api.js";
 
@@ -35,7 +35,7 @@ function CompanyList() {
   
   return (
     <div className="CompanyList col-md-8 offset-md-2">
-      <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
+      <JoblyNavbar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
       {listOfCompanies.length ? (
         <div className="CompanyList-list">
           {listOfCompanies.map(company => (

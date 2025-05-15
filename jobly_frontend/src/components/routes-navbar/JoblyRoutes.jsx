@@ -1,18 +1,18 @@
 import React from "react";
-import {Switch, Route, Navigate} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 
-import Homepage from "./components/home/Homepage.jsx";
-import LoginForm from "./components/auth/LoginForm.jsx";
-import SignupForm from "./components/auth/SignupForm.jsx";
-import UpdateProfileForm from "./components/profile/UpdateProfileForm.jsx";
-import CompanyList from "./components/companies/CompanyList.jsx";
-import CompanyDetail from "./components/companies/CompanyDetail.jsx";
-import JobList from "./components/jobs/JobList.jsx";
+import Homepage from "../home/Homepage.jsx";
+import LoginForm from "../auth/LoginForm.jsx";
+import SignupForm from "../auth/SignupForm.jsx";
+import UpdateProfileForm from "../profile/UpdateProfileForm.jsx";
+import CompanyList from "../companies/CompanyList.jsx";
+import CompanyDetail from "../companies/CompanyDetail.jsx";
+import JobList from "../jobs/JobList.jsx";
 
-function Routes({signUpFunc, loginFunc}) {
+function JoblyRoutes({signUpFunc, loginFunc}) {
   return (
     <div className="Routes pt-5">
-      <Switch>
+      <Routes>
         <Route exact path="/login" element={<LoginForm loginFunc={loginFunc} />} />
         <Route path="/signup" element={<SignupForm signUpFunc={signUpFunc} />} />
         
@@ -22,9 +22,9 @@ function Routes({signUpFunc, loginFunc}) {
         <Route path="/jobs" element={<JobList />} />
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
-      </Switch>
+      </Routes>
     </div>
   );
 }
 
-export default Routes;
+export default JoblyRoutes;
