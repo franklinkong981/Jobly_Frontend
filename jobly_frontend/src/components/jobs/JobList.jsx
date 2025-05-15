@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {ListGroup} from "reactstrap";
 
 import SearchBar from "../SearchBar.jsx";
-import JobPosting from "./JobPosting.jsx";
+import JobPostingList from "./JobPostingList.jsx";
 import JoblyApi from "../../api/api.js";
 
 import {v4 as uuidv4} from "uuid";
@@ -12,11 +11,11 @@ function JobList() {
 
   //retrieve jobs data from database
   useEffect(function loadJobsWhenMounted() {
-    async function fetchJobs() {
+    async function fetchAllJobsInfo() {
       const jobs = await JoblyApi.getAllJobs();
       setListOfJobs(jobs);
     }
-    fetchJobs();
+    fetchAllJobsInfo();
   }, []);
 
   const filterJobSearch = async (searchQuery) => {
@@ -35,15 +34,11 @@ function JobList() {
   } 
   
   return (
-    <div className="JobsList">
+    <div className="JobsList col-md-8 offset-md-2">
       <SearchBar filterFunc={filterJobSearch} placeholder="Search for jobs"/>
-      {listOfJobs.length > 0 ? (
-        <ListGroup>
-        {listOfJobs.map(job => (
-          <JobPosting job={job} key={uuidv4()}/>
-        ))}
-      </ListGroup>
-      ) : <h1>No jobs found</h1>}
+      {listOfJobs.length ? (
+        <JobPostingList listOfJobs={listOfJobs} isGeneral={true} />
+      ) : <p className="JobsList-no-jobs">No jobs found.</p>}
     </div>
   );
 }
