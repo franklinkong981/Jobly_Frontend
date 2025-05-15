@@ -1,41 +1,32 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
-import {ListGroup, ListGroupItem} from "reactstrap";
 
 import JoblyApi from "../../api/api.js";
-import JobPosting from "../jobs/JobPosting.jsx";
-
-import {v4 as uuidv4} from "uuid";
+import JobPostingList from "../jobs/JobPostingList.jsx";
 
 function CompanyDetail() {
-  const params = useParams();
+  const {name} = useParams();
   const [companyInfo, setCompanyInfo] = useState(null);
 
   //retrieve detailed info about company
-  useEffect(function loadComapnyDetailWhenMounted() {
-    async function fetchCompany() {
-      const company = await JoblyApi.getCompany(params.name);
+  useEffect(function loadComapnyDetailsWhenMounted() {
+    async function fetchCompanyDetailsAndJobs() {
+      const company = await JoblyApi.getCompany(name);
       setCompanyInfo(company);
     }
-    fetchCompany();
-  }, []);
+    fetchCompanyDetailsAndJobs();
+  }, [name]);
 
-  if (companyInfo) {
-    return (
-      <div className="CompanyDetail">
-        <h1>Current Openings for {companyInfo.name}</h1>
-        <p>{companyInfo.description}</p>
-        <p>Current number of employees: {companyInfo.numEmployees}</p>
-        <ListGroup>
-          {companyInfo.jobs.map(job => (
-            <JobPosting job={job} key={uuidv4()}/>
-          ))}
-        </ListGroup>
-      </div>
-    );
-  } else {
-    return <h1>Loading...</h1>
-  }
+  if (!companyInfo) return <h1>Loading...</h1>
+
+  return (
+    <div className="CompanyDetail col-md-8 offset-md-2">
+      <h3 className="CompanyDetail-headline">Current Openings for {companyInfo.name}</h3>
+      <p className="CompanyDetail-description">{companyInfo.description}</p>
+      <p className="CompanyDetail-employees">Current number of employees: {companyInfo.numEmployees}</p>
+      <JobPostingList listOfJobs={companyInfo.jobs} isGeneral={false} />
+    </div>
+  );
 }
 
 export default CompanyDetail;
