@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {ListGroup} from "reactstrap";
 
 import SearchBar from "../SearchBar.jsx";
 import CompanyCard from "./CompanyCard.jsx";
@@ -35,15 +34,15 @@ function CompanyList() {
   }
   
   return (
-    <div className="CompanyList">
+    <div className="CompanyList col-md-8 offset-md-2">
       <SearchBar filterFunc={filterCompanySearch} placeholder="Search for companies"/>
-      {listOfCompanies.length > 0 ? (
-        <ListGroup>
+      {listOfCompanies.length ? (
+        <div className="CompanyList-list">
           {listOfCompanies.map(company => (
             <CompanyCard id={company.handle} name={company.name} description={company.description} key={uuidv4()}/>
           ))}
-        </ListGroup>
-      ) : <h1>No companies found</h1>}
+        </div>
+      ) : <p className="CompanyList-no-companies">No companies found</p>}
     </div>
   );
 }
