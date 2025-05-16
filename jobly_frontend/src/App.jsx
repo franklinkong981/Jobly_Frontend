@@ -8,11 +8,15 @@ import JoblyApi from "./api/api.js";
 import JoblyNavbar from "./components/routes-navbar/JoblyNavbar.jsx";
 import JoblyRoutes from "./components/routes-navbar/JoblyRoutes.jsx";
 
+import useLocalStorage from "./hooks/useLocalStorage.jsx";
+
 import CurrentUserContext from "./contexts/currentUserContext.jsx";
+
+export const TOKEN_STORAGE_ID = "jobly-token";
 
 function App() {
   const [userInfoLoaded, setUserInfoLoaded] = useState(false);
-  const [userToken, setUserToken] = useState("");
+  const [userToken, setUserToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
 
   useEffect(function getUserInfoUponTokenChange() {
