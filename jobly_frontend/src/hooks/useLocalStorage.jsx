@@ -5,7 +5,13 @@ function useLocalStorage(key, initialValue = null) {
 
   const [localStorageValue, setLocalStorageValue]= useState(value);
 
-  
+  useEffect(function setLocalStorageValue() {
+    if (!localStorageValue) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage(key, localStorageValue);
+    }
+  }, [key, localStorageValue]);
 
   return [localStorageValue, setLocalStorageValue];
 }
