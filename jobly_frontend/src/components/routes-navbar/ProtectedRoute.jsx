@@ -1,8 +1,8 @@
-import React,{useContext} from "react";
+import React, {useContext} from "react";
 import {Route, Navigate} from "react-router-dom";
-import currentUserContext from "../contexts-currentUserContext.jsx";
+import currentUserContext from "../../contexts/currentUserContext.jsx";
 
-function ProtectedRoute({path, element}) {
+function ProtectedRoute({children}) {
   const {currentUserInfo} = useContext(currentUserContext);
 
   if (!currentUserInfo) {
@@ -10,7 +10,9 @@ function ProtectedRoute({path, element}) {
   }
 
   return (
-    <Route exact path={path} element={element} />
+    <div>
+      {children}
+    </div>
   );
 }
 

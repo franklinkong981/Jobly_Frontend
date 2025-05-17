@@ -105,6 +105,7 @@ function SignupForm({signUpFunc}) {
                 Create Account
               </button>
             </form>
+            <p>Already have an account? <a href="/login">Log In Now!</a></p>
           </div>
         </div>
       </div>
