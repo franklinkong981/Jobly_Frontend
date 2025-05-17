@@ -67,6 +67,7 @@ function LoginForm({loginFunc}) {
                 Log In
               </button>
             </form>
+            <p>Don't have an account? <a href="/signup">Create one now!</a></p>
           </div>
         </div>
       </div>
