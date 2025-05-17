@@ -1,6 +1,8 @@
 import React from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 
+import ProtectedRoute from "./ProtectedRoute.jsx";
+
 import Homepage from "../home/Homepage.jsx";
 import LoginForm from "../auth/LoginForm.jsx";
 import SignupForm from "../auth/SignupForm.jsx";
@@ -16,10 +18,10 @@ function JoblyRoutes({signUpFunc, loginFunc}) {
         <Route exact path="/login" element={<LoginForm loginFunc={loginFunc} />} />
         <Route path="/signup" element={<SignupForm signUpFunc={signUpFunc} />} />
         
-        <Route path="/profile" element={<UpdateProfileForm />} />
-        <Route path="/companies" element={<CompanyList />} />
-        <Route path="/companies/:name" element={<CompanyDetail />} />
-        <Route path="/jobs" element={<JobList />} />
+        <ProtectedRoute path="/profile" element={<UpdateProfileForm />} />
+        <ProtectedRoute path="/companies" element={<CompanyList />} />
+        <ProtectedRoute path="/companies/:name" element={<CompanyDetail />} />
+        <ProtectedRoute path="/jobs" element={<JobList />} />
         <Route exact path="/" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
