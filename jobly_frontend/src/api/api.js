@@ -64,6 +64,12 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Updates logged in user's information in the database. Can update first name, last name, and/or email. */
+  static async updateUserProfile(username, updateProfileFormValues) {
+    let res = await this.request(`users/${username}`, updateProfileFormValues, "patch");
+    return res.user;
+  }
+
   /** Retrieve and get details on all companies currently in the database. GET request on /companies will return
    * an array of company objects like:
    *  [companies: { handle, name, description, numEmployees, logoUrl }, ...]

@@ -14,8 +14,7 @@ function UpdateProfileForm() {
     username: currentUserInfo.username,
     firstName: currentUserInfo.firstName,
     lastName: currentUserInfo.lastName,
-    email: currentUserInfo.email,
-    password: ""
+    email: currentUserInfo.email
   });
   const [profileFormErrors, setProfileFormErrors] = useState([]);
 
@@ -66,16 +65,6 @@ function UpdateProfileForm() {
                 type="email"
                 name="email"
                 value={profileFormData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="UpdateProfileForm-password-field">Confirm password to make changes:</label>
-              <input id="UpdateProfileForm-password-field"
-                className="form-control"
-                type="password"
-                name="password"
-                value={profileFormData.password}
                 onChange={handleChange}
               />
             </div>
