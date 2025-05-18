@@ -6,7 +6,6 @@ import JoblyApi from "../../api/api.js";
 import Alert from "../reusables/Alert.jsx";
 
 import currentUserContext from "../../contexts/currentUserContext.jsx";
-import { yupToFormErrors } from "formik";
 
 function UpdateProfileForm() {
   const {currentUserInfo, setCurrentUserInfo} = useContext(currentUserContext);
@@ -21,6 +20,14 @@ function UpdateProfileForm() {
   const [profileFormErrors, setProfileFormErrors] = useState([]);
 
   const [updateProfileSuccessful, setUpdateProfileSuccessful] = useState(false);
+
+  function handleChange(evt) {
+    const {name, value} = evt.target;
+    setProfileFormData(profileFormData => ({
+      ...profileFormData,
+      [name]: value
+    }));
+  }
 
   return (
     <div className="UpdateProfileForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
