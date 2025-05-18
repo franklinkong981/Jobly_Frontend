@@ -48,7 +48,7 @@ function UpdateProfileForm() {
     }
 
     setProfileFormData(formData => ({...formData, password: ""}));
-    setProfileeFormErrors([]);
+    setProfileFormErrors([]);
     setUpdateProfileSuccessful(true);
 
     setCurrentUserInfo(updatedUserInfo);
