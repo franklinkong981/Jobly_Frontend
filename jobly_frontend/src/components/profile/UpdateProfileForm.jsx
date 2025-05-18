@@ -28,6 +28,32 @@ function UpdateProfileForm() {
     }));
   }
 
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+
+    let updateProfileFormValues = {
+      firstName: profileFormData.firstName,
+      lastName: profileFormData.lastName,
+      email: profileFormData.email
+    };
+
+    let username = profileFormData.username;
+    let updatedUserInfo;
+
+    try {
+      updatedUserInfo = await JoblyApi.updateUserProfile(username, updateProfileFormValues);
+    } catch(errors) {
+      setProfileFormErrors(errors);
+      return;
+    }
+
+    setProfileFormData(formData => ({...formData, password: ""}));
+    setProfileeFormErrors([]);
+    setUpdateProfileSuccessful(true);
+
+    setCurrentUserInfo(updatedUserInfo);
+  }
+
   return (
     <div className="UpdateProfileForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
       <h2 className="UpdateProfileForm-title">Edit Profile Information.</h2>
