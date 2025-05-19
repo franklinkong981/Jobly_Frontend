@@ -19,6 +19,8 @@ function App() {
   const [userToken, setUserToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUserInfo, setCurrentUserInfo] = useState(null);
 
+  const [appliedJobIds, setAppliedJobIds] = useState(new Set([]));
+
   useEffect(function getUserInfoUponTokenChange() {
     async function getCurrentUserInfo() {
       if (userToken) {
@@ -27,6 +29,7 @@ function App() {
           let currentUserPayload= jwtDecode(userToken);
           let currentUser = await JoblyApi.getCurrentLoggedInUser(currentUserPayload.username);
           setCurrentUserInfo(currentUser);
+          setAppliedJobIds(new Set(currentUser.jobs));
         } catch(err) {
           console.error("Problem encountered while fetching new current user information: ", err);
           setCurrentUserInfo(null);
@@ -69,6 +72,17 @@ function App() {
     setUserToken(userToken => null);
   };
 
+  const hasUserAppliedToJob(jobId) {
+    return appliedJobIds.has(jobId);
+  }
+
+  const applyToJob(jobId) {
+    if (hasUserAppliedtoJob(jobId)) return;
+
+    JoblyApi.applyToJob(currentUserInfo.username, jobId);
+    setAppliedJobIds(new Set([...appliedJobIds, jobId]));
+  }
+
   if (!userInfoLoaded) return (
     <div className="App">
       <h1>Loading...</h1>
@@ -77,7 +91,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo}}>
+      <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, hasUserAppliedToJob, applyToJob}}>
         <div className="App">
           <JoblyNavbar logOutFunc={logoutUser} />
           <JoblyRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />

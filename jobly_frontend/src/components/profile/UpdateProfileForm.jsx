@@ -5,10 +5,10 @@ import JoblyApi from "../../api/api.js";
 
 import Alert from "../reusables/Alert.jsx";
 
-import currentUserContext from "../../contexts/currentUserContext.jsx";
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 function UpdateProfileForm() {
-  const {currentUserInfo, setCurrentUserInfo} = useContext(currentUserContext);
+  const {currentUserInfo, setCurrentUserInfo} = useContext(CurrentUserContext);
 
   const [profileFormData, setProfileFormData] = useState({
     username: currentUserInfo.username,
