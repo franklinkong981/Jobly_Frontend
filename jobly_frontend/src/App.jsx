@@ -29,7 +29,7 @@ function App() {
           let currentUserPayload= jwtDecode(userToken);
           let currentUser = await JoblyApi.getCurrentLoggedInUser(currentUserPayload.username);
           setCurrentUserInfo(currentUser);
-          setAppliedJobIds(new Set(currentUser.jobs));
+          setAppliedJobIds(new Set(currentUser.appliedJobs));
         } catch(err) {
           console.error("Problem encountered while fetching new current user information: ", err);
           setCurrentUserInfo(null);
@@ -76,10 +76,10 @@ function App() {
     return appliedJobIds.has(jobId);
   };
 
-  const applyToJob = (jobId) => {
-    if (hasUserAppliedtoJob(jobId)) return;
+  const applyToJob = async (jobId) => {
+    if (hasUserAppliedToJob(jobId)) return;
 
-    JoblyApi.applyToJob(currentUserInfo.username, jobId);
+    await JoblyApi.applyToJob(currentUserInfo.username, jobId);
     setAppliedJobIds(new Set([...appliedJobIds, jobId]));
   };
 

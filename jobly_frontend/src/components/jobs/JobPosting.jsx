@@ -6,7 +6,7 @@ import "./JobPosting.css";
 
 function JobPosting({job, isGeneral}) {
   const {hasUserAppliedToJob, applyToJob} = useContext(CurrentUserContext);
-  const [hasApplied, setHasApplied] = useState(false);
+  const [hasApplied, setHasApplied] = useState();
 
   useEffect(function updateJobApplicationStatus() {
     setHasApplied(hasUserAppliedToJob(job.id))
@@ -14,7 +14,7 @@ function JobPosting({job, isGeneral}) {
 
   async function handleApplyClick(evt) {
     if (hasUserAppliedToJob(job.id)) return;
-    applyToJob(job.id);
+    await applyToJob(job.id);
     setHasApplied(true);
   }
 
@@ -27,7 +27,7 @@ function JobPosting({job, isGeneral}) {
         <p>Equity: {job.equity || "N/A"}</p>
         <button 
           className="btn btn-danger font-weight-bold float-right"
-          onClick={handleApply} disabled={hasApplied}>
+          onClick={handleApplyClick} disabled={hasApplied}>
             {hasApplied ? "Applied" : "Apply"}
         </button>
       </div>

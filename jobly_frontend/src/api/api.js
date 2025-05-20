@@ -117,7 +117,7 @@ class JoblyApi {
 
   /** Lets the user apply to a job, and updates the status in the database. */
   static async applyToJob(username, jobId) {
-    let res = await this.request(`/users/${username}/jobs/${jobId}`, "post");
+    let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
     return res.applied;
   }
 
