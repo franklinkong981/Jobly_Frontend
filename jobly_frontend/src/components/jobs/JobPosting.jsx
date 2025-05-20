@@ -1,8 +1,22 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
+
+import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
 import "./JobPosting.css";
 
 function JobPosting({job, isGeneral}) {
+  const {hasUserAppliedToJob, applyToJob} = useContext(CurrentUserContext);
+  const [hasApplied, setHasApplied] = useState(false);
+
+  useEffect(function updateJobApplicationStatus() {
+    setHasApplied(hasUserAppliedToJob(job.id))
+  }, [job.id, hasUserAppliedToJob]);
+
+  async function handleApplyClick(evt) {
+    if (hasUserAppliedToJob(job.id)) return;
+    applyToJob(job.id);
+    setHasApplied(true);
+  }
 
   return (
     <div className="JobPosting card">
@@ -11,6 +25,11 @@ function JobPosting({job, isGeneral}) {
         {isGeneral ? <h6 className="JobPosting-company">{job.companyName}</h6> : ""}
         <p>Salary: {job.salary || "N/A"}</p>
         <p>Equity: {job.equity || "N/A"}</p>
+        <button 
+          className="btn btn-danger font-weight-bold float-right"
+          onClick={handleApply} disabled={hasApplied}>
+            {hasApplied ? "Applied" : "Apply"}
+        </button>
       </div>
     </div>
   );
