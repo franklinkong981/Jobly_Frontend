@@ -72,16 +72,16 @@ function App() {
     setUserToken(userToken => null);
   };
 
-  const hasUserAppliedToJob(jobId) {
+  const hasUserAppliedToJob = (jobId) => {
     return appliedJobIds.has(jobId);
-  }
+  };
 
-  const applyToJob(jobId) {
+  const applyToJob = (jobId) => {
     if (hasUserAppliedtoJob(jobId)) return;
 
     JoblyApi.applyToJob(currentUserInfo.username, jobId);
     setAppliedJobIds(new Set([...appliedJobIds, jobId]));
-  }
+  };
 
   if (!userInfoLoaded) return (
     <div className="App">
