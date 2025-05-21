@@ -61,7 +61,7 @@ function LoginForm({loginFunc}) {
                 />
               </div>
 
-              {loginFormErrors.length ? <Alert alertText={loginFormErrors} /> : null}
+              {loginFormErrors.length ? <Alert alertTexts={loginFormErrors} /> : null}
 
               <button type="submit" className="btn btn-primary float-right" onSubmit={handleSubmit}>
                 Log In
