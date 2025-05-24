@@ -90,14 +90,12 @@ function App() {
   )
 
   return (
-    <BrowserRouter>
-      <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, hasUserAppliedToJob, applyToJob}}>
-        <div className="App">
-          <JoblyNavbar logOutFunc={logoutUser} />
-          <JoblyRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />
-        </div>
-      </CurrentUserContext.Provider>
-    </BrowserRouter>
+    <CurrentUserContext.Provider value={{currentUserInfo, setCurrentUserInfo, hasUserAppliedToJob, applyToJob}}>
+      <div className="App">
+        <JoblyNavbar logOutFunc={logoutUser} />
+        <JoblyRoutes signUpFunc={signUpNewUser} loginFunc={loginUser} />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
