@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="SearchBar mb-4"
+  >
+    <form
+      class="SearchBar-form form-inline"
+    >
+      <input
+        class="SearchBar-input form-control form-control-lg flex-grow-1"
+        name="searchQuery"
+        placeholder="This is for testing"
+        value=""
+      />
+      <button
+        class="SearchBar-submit btn btn-lg btn-primary"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

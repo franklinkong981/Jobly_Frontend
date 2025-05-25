@@ -8,8 +8,8 @@ const testUser = {
   email: "testuser981@gmail.com"
 };
 
-const TestUserProvider = ({children, currentTestUser = testUser, hasUserAppliedToJob= () => false}) => (
-  <CurrentUserContext.Provider value={{currentTestUser, hasUserAppliedToJob}}>
+const TestUserProvider = ({children, currentUserInfo = testUser, hasUserAppliedToJob= () => false}) => (
+  <CurrentUserContext.Provider value={{currentUserInfo, hasUserAppliedToJob}}>
     {children}
   </CurrentUserContext.Provider>
 );

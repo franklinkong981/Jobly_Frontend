@@ -6,34 +6,34 @@ exports[`matches snapshot when logged in 1`] = `
     class="Homepage"
   >
     <div
-      class="Homepage-logged-out container text-center"
+      class="Homepage-logged-in container text-center"
     >
       <h1
-        class="Homepage-logged-out-title mb-4 font-weight-bold"
+        class="Homepage-logged-in-title mb-4 font-weight-bold"
       >
-        Welcome to Jobly!
+        Welcome back !
       </h1>
       <p
-        class="Homepage-logged-out-subtitle lead"
+        class="Homepage-logged-in-subtitle lead"
       >
-        Find all companies and job openings here in one convenient place.
+        See companies and job openings below.
       </p>
       <div
-        class="Homepage-logged-out-links"
+        class="Homepage-logged-in-links"
       >
         <a
-          class="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3"
+          class="Homepage-logged-in-companies-link btn btn-secondary font-weight-bold mr-3"
           data-discover="true"
-          href="/login"
+          href="/companies"
         >
-          Log In
+          See All Companies
         </a>
         <a
-          class="Homepage-logged-out-signup-link btn btn-info font-weight-bold"
+          class="Homepage-logged-in-jobs-link btn btn-info font-weight-bold"
           data-discover="true"
-          href="/signup"
+          href="/jobs"
         >
-          Create Account
+          See Job Openings
         </a>
       </div>
     </div>
@@ -47,34 +47,34 @@ exports[`matches snapshot when logged out 1`] = `
     class="Homepage"
   >
     <div
-      class="Homepage-logged-out container text-center"
+      class="Homepage-logged-in container text-center"
     >
       <h1
-        class="Homepage-logged-out-title mb-4 font-weight-bold"
+        class="Homepage-logged-in-title mb-4 font-weight-bold"
       >
-        Welcome to Jobly!
+        Welcome back !
       </h1>
       <p
-        class="Homepage-logged-out-subtitle lead"
+        class="Homepage-logged-in-subtitle lead"
       >
-        Find all companies and job openings here in one convenient place.
+        See companies and job openings below.
       </p>
       <div
-        class="Homepage-logged-out-links"
+        class="Homepage-logged-in-links"
       >
         <a
-          class="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3"
+          class="Homepage-logged-in-companies-link btn btn-secondary font-weight-bold mr-3"
           data-discover="true"
-          href="/login"
+          href="/companies"
         >
-          Log In
+          See All Companies
         </a>
         <a
-          class="Homepage-logged-out-signup-link btn btn-info font-weight-bold"
+          class="Homepage-logged-in-jobs-link btn btn-info font-weight-bold"
           data-discover="true"
-          href="/signup"
+          href="/jobs"
         >
-          Create Account
+          See Job Openings
         </a>
       </div>
     </div>

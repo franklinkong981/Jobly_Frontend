@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="UpdateProfileForm col-md-6 col-lg-4 offset-md-3 offset-lg-4"
+  >
+    <h2
+      class="UpdateProfileForm-title"
+    >
+      Edit Profile Information.
+    </h2>
+    <div
+      class="card"
+    >
+      <div
+        class="card-body"
+      >
+        <form>
+          <div
+            class="form-group"
+          >
+            <label
+              for="UpdateProfileForm-username-field"
+            >
+              Username:
+            </label>
+            <p
+              class="form-control-plaintext"
+              id="UpdateProfileForm-username-field"
+            >
+              testuser
+            </p>
+          </div>
+          <div
+            class="form-group"
+          >
+            <label
+              for="UpdateProfileForm-first-name-field"
+            >
+              First Name:
+            </label>
+            <input
+              class="form-control"
+              id="UpdatProfileForm-first-name-field"
+              name="firstName"
+              type="text"
+            />
+          </div>
+          <div
+            class="form-group"
+          >
+            <label
+              for="UpdateProfileForm-last-name-field"
+            >
+              Last Name:
+            </label>
+            <input
+              class="form-control"
+              id="UpdateProfileForm-last-name-field"
+              name="lastName"
+              type="text"
+            />
+          </div>
+          <div
+            class="form-group"
+          >
+            <label
+              for="UpdateProfileForm-email-field"
+            >
+              Email:
+            </label>
+            <input
+              class="form-control"
+              id="UpdateProfileForm-email-field"
+              name="email"
+              type="email"
+              value="testuser981@gmail.com"
+            />
+          </div>
+          <button
+            class="UpdateProfileForm-button btn btn-primary btn-block mt-4"
+          >
+            Save Updated Info
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

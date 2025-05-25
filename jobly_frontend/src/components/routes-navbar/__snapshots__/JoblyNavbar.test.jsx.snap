@@ -21,9 +21,9 @@ exports[`matches snapshot when logged in 1`] = `
         <a
           class="nav-link"
           data-discover="true"
-          href="/login"
+          href="/companies"
         >
-          Log In
+          All Companies
         </a>
       </li>
       <li
@@ -32,9 +32,31 @@ exports[`matches snapshot when logged in 1`] = `
         <a
           class="nav-link"
           data-discover="true"
-          href="/signup"
+          href="/jobs"
         >
-          Sign Up
+          All Jobs
+        </a>
+      </li>
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/profile"
+        >
+          Update Profile
+        </a>
+      </li>
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link logout-link"
+          data-discover="true"
+          href="/"
+        >
+          Log out testuser
         </a>
       </li>
     </ul>
@@ -63,9 +85,9 @@ exports[`matches snapshot when logged out 1`] = `
         <a
           class="nav-link"
           data-discover="true"
-          href="/login"
+          href="/companies"
         >
-          Log In
+          All Companies
         </a>
       </li>
       <li
@@ -74,9 +96,31 @@ exports[`matches snapshot when logged out 1`] = `
         <a
           class="nav-link"
           data-discover="true"
-          href="/signup"
+          href="/jobs"
         >
-          Sign Up
+          All Jobs
+        </a>
+      </li>
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/profile"
+        >
+          Update Profile
+        </a>
+      </li>
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link logout-link"
+          data-discover="true"
+          href="/"
+        >
+          Log out testuser
         </a>
       </li>
     </ul>
