@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot when logged in 1`] = `
+<DocumentFragment>
+  <div
+    class="Homepage"
+  >
+    <div
+      class="Homepage-logged-out container text-center"
+    >
+      <h1
+        class="Homepage-logged-out-title mb-4 font-weight-bold"
+      >
+        Welcome to Jobly!
+      </h1>
+      <p
+        class="Homepage-logged-out-subtitle lead"
+      >
+        Find all companies and job openings here in one convenient place.
+      </p>
+      <div
+        class="Homepage-logged-out-links"
+      >
+        <a
+          class="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3"
+          data-discover="true"
+          href="/login"
+        >
+          Log In
+        </a>
+        <a
+          class="Homepage-logged-out-signup-link btn btn-info font-weight-bold"
+          data-discover="true"
+          href="/signup"
+        >
+          Create Account
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matches snapshot when logged out 1`] = `
+<DocumentFragment>
+  <div
+    class="Homepage"
+  >
+    <div
+      class="Homepage-logged-out container text-center"
+    >
+      <h1
+        class="Homepage-logged-out-title mb-4 font-weight-bold"
+      >
+        Welcome to Jobly!
+      </h1>
+      <p
+        class="Homepage-logged-out-subtitle lead"
+      >
+        Find all companies and job openings here in one convenient place.
+      </p>
+      <div
+        class="Homepage-logged-out-links"
+      >
+        <a
+          class="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3"
+          data-discover="true"
+          href="/login"
+        >
+          Log In
+        </a>
+        <a
+          class="Homepage-logged-out-signup-link btn btn-info font-weight-bold"
+          data-discover="true"
+          href="/signup"
+        >
+          Create Account
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
