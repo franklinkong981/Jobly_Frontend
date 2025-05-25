@@ -1,0 +1,29 @@
+import React from "react";
+import {render} from "@testing-library/react";
+import {MemoryRouter} from "reactr-router-dom";
+
+import UpdateProfileForm from "./UpdateProfileForm.jsx";
+
+import {TestUserProvider} from "../../contexts/testUserContext.jsx";
+import { expect, it } from "vitest";
+
+it("renders without crashing", function() {
+  render(
+    <MemoryRouter>
+      <TestUserProvider>
+        <UpdateProfileForm />
+      </TestUserProvider>
+    </MemoryRouter>
+  );
+});
+
+it("matches snapshot", function() {
+  const {asFragment} = render(
+    <MemoryRouter>
+      <TestUserProvider>
+        <UpdateProfileForm />
+      </TestUserProvider>
+    </MemoryRouter>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});
