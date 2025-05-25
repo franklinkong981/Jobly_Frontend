@@ -1,0 +1,85 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot when logged in 1`] = `
+<DocumentFragment>
+  <nav
+    class="JoblyNavbar navbar navbar-expand-md"
+  >
+    <a
+      class="navbar-brand"
+      data-discover="true"
+      href="/"
+    >
+      Jobly
+    </a>
+    <ul
+      class="navbar-nav ml-auto"
+    >
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Log In
+        </a>
+      </li>
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`matches snapshot when logged out 1`] = `
+<DocumentFragment>
+  <nav
+    class="JoblyNavbar navbar navbar-expand-md"
+  >
+    <a
+      class="navbar-brand"
+      data-discover="true"
+      href="/"
+    >
+      Jobly
+    </a>
+    <ul
+      class="navbar-nav ml-auto"
+    >
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/login"
+        >
+          Log In
+        </a>
+      </li>
+      <li
+        class="nav-item mr-4"
+      >
+        <a
+          class="nav-link"
+          data-discover="true"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;
