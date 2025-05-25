@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <nav
+      class="JoblyNavbar navbar navbar-expand-md"
+    >
+      <a
+        class="navbar-brand"
+        data-discover="true"
+        href="/"
+      >
+        Jobly
+      </a>
+      <ul
+        class="navbar-nav ml-auto"
+      >
+        <li
+          class="nav-item mr-4"
+        >
+          <a
+            class="nav-link"
+            data-discover="true"
+            href="/login"
+          >
+            Log In
+          </a>
+        </li>
+        <li
+          class="nav-item mr-4"
+        >
+          <a
+            class="nav-link"
+            data-discover="true"
+            href="/signup"
+          >
+            Sign Up
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="Routes pt-5"
+    >
+      <div
+        class="Homepage"
+      >
+        <div
+          class="Homepage-logged-out container text-center"
+        >
+          <h1
+            class="Homepage-logged-out-title mb-4 font-weight-bold"
+          >
+            Welcome to Jobly!
+          </h1>
+          <p
+            class="Homepage-logged-out-subtitle lead"
+          >
+            Find all companies and job openings here in one convenient place.
+          </p>
+          <div
+            class="Homepage-logged-out-links"
+          >
+            <a
+              class="Homepage-logged-out-login-link btn btn-secondary font-weight-bold mr-3"
+              data-discover="true"
+              href="/login"
+            >
+              Log In
+            </a>
+            <a
+              class="Homepage-logged-out-signup-link btn btn-info font-weight-bold"
+              data-discover="true"
+              href="/signup"
+            >
+              Create Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
