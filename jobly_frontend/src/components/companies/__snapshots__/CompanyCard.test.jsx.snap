@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="CompanyCard card"
+  >
+    <div
+      class="Companycard-content card-body"
+    >
+      <h3
+        class="CompanyCard-title card-title"
+      >
+        Rithm School
+      </h3>
+      <p
+        class="CompanyCard-description"
+      >
+        Become an exceptional developer in 16 weeks.
+      </p>
+      <a
+        class="CompanyCard-link btn btn-info font-weight-bold"
+        data-discover="true"
+        href="/companies/rithm"
+      >
+        See Job Openings
+      </a>
+    </div>
+  </section>
+</DocumentFragment>
+`;
