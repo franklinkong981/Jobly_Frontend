@@ -11,6 +11,14 @@ import CompanyList from "../companies/CompanyList.jsx";
 import CompanyDetail from "../companies/CompanyDetail.jsx";
 import JobList from "../jobs/JobList.jsx";
 
+/**
+ * The component for site-wide routes rendered by the App component.
+ * 
+ * Parts of the site should only be visitable when logged in. Those routes
+ * are wrapped by <ProtectedRoute>, which is an authorization component.
+ * 
+ * Visitng a non-existent route redirects to the homepage.
+ */
 function JoblyRoutes({signUpFunc, loginFunc}) {
   return (
     <div className="Routes pt-5">

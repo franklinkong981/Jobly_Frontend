@@ -3,6 +3,19 @@ import { Link, NavLink } from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
+import "./JoblyNavbar.css";
+
+/**
+ * Navigation bar for the site, and shows up on every page.
+ * Rendered by the top-level App component.
+ * 
+ * When user is logged in, shows links to companies, jobs, update user profile,
+ * and log out link which runs the logOutFunc function prop to log the user out upon being clicked.
+ * 
+ * When logged out, will show links to the sign up and login forms.
+ * 
+ * Both logged in and logged out navbars will have the Jobly logo displayed on the left which redirects to the homepage.
+ */
 function JoblyNavbar({logOutFunc}) {
   const {currentUserInfo} = useContext(CurrentUserContext);
 
