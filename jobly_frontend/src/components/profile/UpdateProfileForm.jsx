@@ -7,6 +7,17 @@ import Alert from "../reusables/Alert.jsx";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
+/**
+ * Profile editing form that logged in user can fill out to update their profile information.
+ * Top-level component of /profile route.
+ * 
+ * Handles changes to local form state on the frontend. Submitting form calls JoblyApi to save
+ * updated user information on the backend and also the frontend through currentUserInfo in CurrentUserContext,
+ * which triggers reloading throughout the site to updated user information.
+ * 
+ * Alert messages will be displayed if user inputs don't match expected criteria, confirmation of a successful save is a simple Alert component.
+ * Uses the Alert component.
+ */
 function UpdateProfileForm() {
   const {currentUserInfo, setCurrentUserInfo} = useContext(CurrentUserContext);
 
@@ -28,6 +39,12 @@ function UpdateProfileForm() {
     }));
   }
 
+  /**
+   * On form submission,
+   * - First attempt to update user information on backend and report an errors.
+   * - Upon successful update, clears any error messages on form, shows save-confirmed message.
+   * - Finally, updates current user info on frontend through CurrentUserContext and reloads current user info throughout the site.
+   */
   async function handleSubmit(evt) {
     evt.preventDefault();
 
@@ -51,6 +68,7 @@ function UpdateProfileForm() {
     setProfileFormErrors([]);
     setUpdateProfileSuccessful(true);
 
+    // triggers current user info throughout the site.
     setCurrentUserInfo(updatedUserInfo);
   }
 
