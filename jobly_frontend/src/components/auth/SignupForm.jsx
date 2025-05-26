@@ -3,6 +3,17 @@ import {useNavigate} from "react-router-dom";
 
 import Alert from "../reusables/Alert.jsx";
 
+/** Signup form. Users can sign up by entering information such as their usernamd and email.
+ * Top level component of the route /signup.
+ * 
+ * This component shows the form and manages the update to form fields as state changes.
+ * 
+ * Upon submission:
+ * - Calls the JoblyApi which communicates with backend to create a new account for the user in the database.
+ * - If failed, return errors as Alert components. 
+ * - If successful, returns user token, and updates user information in frontend by loading logged in user info into the CurrentUserContext.
+ * - Finally, redirects to logged in homepage.
+ */
 function SignupForm({signUpFunc}) {
   const navigate = useNavigate();
 
@@ -15,6 +26,11 @@ function SignupForm({signUpFunc}) {
   });
   const [signUpFormErrors, setSignUpFormErrors] = useState([]);
 
+  /**
+   * Handles form submission. Calls the loginFunc prop, which should contain
+   * a call to the JoblyApi to create a new account for the user in the backend database.
+   * If successful, redirect to logged in homepage.
+   */
   async function handleSubmit(evt) {
     evt.preventDefault();
     let signUpResult = await signUpFunc(signUpFormData);

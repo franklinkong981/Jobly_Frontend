@@ -3,7 +3,17 @@ import {useNavigate} from "react-router-dom";
 
 import Alert from "../reusables/Alert.jsx";
 
-
+/** Login form. Users can log in by entering their username and password.
+ * Top level component of the route /login.
+ * 
+ * This component shows the form and manages the update to form fields as state changes.
+ * 
+ * Upon submission:
+ * - Calls the JoblyApi which communicates with backend to authenticate the user.
+ * - If failed, return errors as Alert components. 
+ * - If successful, returns user token, and updates user information in frontend.
+ * - Finally, redirects to logged in homepage.
+ */
 function LoginForm({loginFunc}) {
   const navigate = useNavigate();
 
@@ -13,6 +23,11 @@ function LoginForm({loginFunc}) {
     });
   const [loginFormErrors, setLoginFormErrors] = useState([]);
 
+  /**
+   * Handles form submission. Calls the loginFunc prop, which should contain
+   * a call to the JoblyApi to authenticate the user via the backend.
+   * If successful, redirect to logged in homepage.
+   */
   async function handleSubmit(evt) {
     evt.preventDefault();
     let loginResult = await loginFunc(loginFormData);

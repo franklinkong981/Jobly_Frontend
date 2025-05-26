@@ -3,6 +3,16 @@ import {Link} from "react-router-dom";
 
 import CurrentUserContext from "../../contexts/currentUserContext.jsx";
 
+import "./Homepage.css";
+
+/**
+ * Homepage of site. Top-level component of the route /.
+ * 
+ * If user is logged in, will display a welcome message with their name, and contain
+ * links to the companies page and jobs page.
+ * 
+ * If user is logged out, will display a generic welcome to Jobly message with links to the signup and login forms.
+ */
 function Homepage() {
   const {currentUserInfo} = useContext(CurrentUserContext);
 
