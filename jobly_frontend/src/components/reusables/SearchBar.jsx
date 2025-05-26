@@ -1,14 +1,24 @@
 import React, {useState} from "react";
+import "./SearchBar.css";
 
+/**
+ * Search bar that will be displayed at the top of the companies list and jobs list pages.
+ * Users can type in a query and submit the form, then only the cmompanies/jobs whose names contain the query will be displayed.
+ * 
+ * To do this, once the form is submitted, the filterFunc function prop is called to filter the companies/jobs. 
+ * This component is present in the CompanyList and JobList components.
+ */
 function SearchBar({filterFunc, placeholder}) {
   const [searchQuery, setSearchQuery] = useState("");
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchQuery ? filterFunc(searchQuery.trim()) : filterFunc();
+    //This check prevents searching for a query that is just empty spaces.
+    searchQuery.trim() ? filterFunc(searchQuery.trim()) : filterFunc();
     setSearchQuery(searchQuery => searchQuery.trim());
   }
 
+  /** Used to update the value in the searchbar at any given time. */
   function handleChange(evt) {
     setSearchQuery(searchQuery => evt.target.value);
   }
