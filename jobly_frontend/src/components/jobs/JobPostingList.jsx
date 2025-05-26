@@ -1,7 +1,7 @@
 import React from "react";
 import JobPosting from "./JobPosting.jsx";
 
-function JobPostingList({listOfJobs, isGeneral}) {
+function JobPostingList({listOfJobs, isGeneral = true}) {
   return (
     <div className="JobPostingList">
       {listOfJobs.map(job => (

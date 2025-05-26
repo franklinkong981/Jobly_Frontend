@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="JobPostingList"
+  >
+    <div
+      class="JobPosting card"
+    >
+      <div
+        class="JobPosting-content card-body"
+      >
+        <h3
+          class="JobPosting-title card-title"
+        >
+          Tester
+        </h3>
+        <h6
+          class="JobPosting-company"
+        >
+          VS Code
+        </h6>
+        <p>
+          Salary: $100,000
+        </p>
+        <p>
+          Equity: 10
+        </p>
+        <button
+          class="btn btn-danger font-weight-bold float-right"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

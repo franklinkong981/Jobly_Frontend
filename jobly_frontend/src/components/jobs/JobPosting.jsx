@@ -16,7 +16,7 @@ function formatSalary(salary) {
   return digitsRev.reverse().join("");
 }
 
-function JobPosting({job, isGeneral}) {
+function JobPosting({job, isGeneral = true}) {
   const {hasUserAppliedToJob, applyToJob} = useContext(CurrentUserContext);
   const [hasApplied, setHasApplied] = useState();
 
