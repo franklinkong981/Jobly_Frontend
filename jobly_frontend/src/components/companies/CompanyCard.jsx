@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 import "./CompanyCard.css";
 
+/**
+ * Shows information about a company.
+ * Rendered by CompanyList to show a card for each company.
+ * Contains the company's name, description, and a link to the company details page.
+ */
 function CompanyCard({id, name, description}) {
 
   return (
