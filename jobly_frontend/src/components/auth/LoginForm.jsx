@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 import Alert from "../reusables/Alert.jsx";
 
@@ -82,7 +82,7 @@ function LoginForm({loginFunc}) {
                 Log In
               </button>
             </form>
-            <p>Don't have an account? <a href="/signup">Create one now!</a></p>
+            <p>Don't have an account? <Link to="/signup">Create one now!</Link></p>
           </div>
         </div>
       </div>
