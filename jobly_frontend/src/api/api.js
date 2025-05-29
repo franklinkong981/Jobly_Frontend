@@ -24,10 +24,11 @@ class JoblyApi {
   // to a certain route in the backend.
 
   static async request(endpoint, data = {}, method = "get") {
-    console.debug("API Call: ", endpoint, data, method);
+    console.log("API Call: ", endpoint, data, method);
 
     //This is one way to pass an authorization token: As part of the header.
     const url = `${BASE_URL}/${endpoint}`;
+    console.log("URL for API call: ", url);
     const headers = (JoblyApi.token) ? {authorization: `Bearer ${JoblyApi.token}`} : {};
     const params = (method === "get") ? data : {};
 
