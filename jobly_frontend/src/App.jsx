@@ -82,6 +82,7 @@ function App() {
     try {
       console.log(loginFormValues);
       let loginToken = await JoblyApi.login(loginFormValues);
+      console.log(loginToken);
       setUserToken(userToken => loginToken);
       return {loginSuccessful: true};
     } catch(errors) {
